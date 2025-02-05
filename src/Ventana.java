@@ -16,21 +16,24 @@ public class Ventana extends JFrame {
         setLocationRelativeTo(null);
 
         mostrarmensaje = new MensajesFortuna();
-        mensaje = new JLabel("Conoce tu fortuna", SwingConstants.CENTER);
-        mensaje.setBounds(50, 50, 400, 30);
-        add(mensaje);
+        setLayout(new BorderLayout());
+        mensaje = new JLabel(" ", SwingConstants.CENTER);
+        add(mensaje, BorderLayout.CENTER);
+
+        JPanel panelMensaje = new JPanel();
+        panelMensaje.add(mensaje);
+        add(panelMensaje, BorderLayout.NORTH);
 
         boton = new JButton("Descubre tu fortuna");
-        boton.setBounds(200, 200, 100, 50);
+        add(boton, BorderLayout.CENTER);
 
         add(boton);
 
-        boton.addActionListener(new ActionListener() {
-           @Override
-            public void actionPerformed(ActionEvent e) {
-               String fortunaAleatoria = mostrarmensaje.AbrirGalleta();
-               mensaje.setText(fortunaAleatoria);
-           }
+        boton.addActionListener(e -> {
+            String fortunaAleatoria = mostrarmensaje.AbrirGalleta();
+            System.out.println(fortunaAleatoria);
+            mensaje.setText(fortunaAleatoria);
+            repaint();
         });
     }
 

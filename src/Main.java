@@ -1,7 +1,8 @@
 public class Main {
     public static void main(String[] args) {
         javax.swing.SwingUtilities.invokeLater(() -> {
-            new Ventana().setVisible(true);
+            Ventana ventana = new Ventana();
+            ventana.setVisible(true);
         });
     }
 }
